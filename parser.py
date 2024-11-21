@@ -250,9 +250,40 @@ key_with_special_chars: "valeur-123_./`"
 ...
 """
 
+wrong_indentation_yaml="""# Un exemple complet pour tester l'automate
+
+key1: value1  # Une clé avec une valeur simple
+key2:          # Une clé avec une valeur complexe
+  - list_item1
+  - list_item2
+  - list_item3: embedded_value
+
+key3: >        # Un bloc plié
+  Ceci est un bloc de texte plié.
+  La deuxième ligne est collée à la première.
+
+key4: |        # Un bloc littéral
+  Ceci est un bloc de texte littéral.
+  La deuxième ligne reste séparée.
+
+key5:          # Une clé avec sous-objets
+  subkey1: value1
+  subkey2: value2
+  subkey3:
+    - list_item1
+    - list_item2
+    - list_item3
+
+# Test d'une clé avec des caractères spéciaux autorisés
+key_with_special_chars: "valeur-123_./`"
+
+# Un test de fin de document
+...
+"""
+
 parser = YAMLParser()
 try:
-    if parser.parse(yaml_input):
+    if parser.parse(wrong_indentation_yaml):
         print("Le YAML est conforme.")
 except SyntaxError as e:
     print(f"Erreur de syntaxe : {e}")

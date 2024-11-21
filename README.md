@@ -2,6 +2,11 @@
 
 This project implements a custom YAML parser to validate and parse YAML syntax. Below are the steps to set up and run the project in a Python virtual environment.
 
+The parser is very sensitive, and some copy and pastes don't add the right number of spaces for indentation, resulting in incorrect results. 
+It is recommended to use the yaml provided in the project to test it.
+
+yaml_input and yaml_input_2 are two valid yaml for the parser, whereas the wrong_indentation_yaml is the same as the yaml_input_2 with some indentations issues. 
+
 ---
 
 ## Prerequisites
